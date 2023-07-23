@@ -176,8 +176,27 @@ localhost:5432  guest/guest
 
 
 binding
-                                                                  
 
+# RabbitMQ Cluster
+                                                                  
+## Types of Nodes
+
++  RAM node (RAM memory)
++ Disk Node (Disc memory)
+
+> rabbitmqctl cluster_status
+> 
+> rabbitmqctl stop_app
+> 
+> nohup rabbitmq-server restart &
+> 
+> nohup rabbitmqctl start_app
+> 
+
+> vim /var/lib/rabbitmq/.erlang.cookie
+> 
+>rabbitmqctl join_cluster rabbit@masternode  --ram
+> 
 
 
 
