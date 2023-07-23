@@ -8,7 +8,7 @@
 
 AMQP(Advanced Message Queuing Protocol)
 
-rabbitmq recommand AMQP 0-9-1
+rabbitmq recommend AMQP 0-9-1
 
 rabbitmq also support other protocols through plugin
 
@@ -25,7 +25,7 @@ Exchange Attributes
 + Exchange durability
 + auto-delete
 
-Message Atrributes
+Message Attributes
 
 + Routing Key
 + Header
@@ -85,21 +85,21 @@ ON windows
 
 setx varname varvalue
 
-| variable name | Default value | OS | Usage 
-| ------------ | -------------- | -- | ----- |
-RABBITMQ_BASE  | %VPPDATA%RabbitMQ | Windows Only | Location where RabbitMQ has database and logs files
-RABBITMQ_CONFIG_FILE | %RABBITMQ_BASE%rabbitmq.conf | Windows and Unix | Used to configure location of RabbitMQ config file
-RABBITMQ_CONSOLE_LOG | NA | Windows and Unix | Used to redirect console output from server to a file
-RABBITMQ_LOGS | Windows - %APPDATA%RabbitMQ\log,Linux: /var/log/rabbitmq | Windows & Unix | This variable holds the location of rabbitmq logs
-RABBITMQ_LOG_BASE | NA | Windows & Unix | This variable hods log file base location of rabbitmq logs
-RABBITMQ_MNESIA_DIR | Linux: /var/lib/rabbitmq, Windows - %APPDATA%RabbitMQ | Windows & Unix | Used to configure location of Mnesia database directory
-RABBITMQ_MNESIA_BASE | NA | Windows & Unix | Used to store base directory of Mnesia database
-RABBITMQ_NODE_IP_ADDRESS | By default, it binds to all network interfaces in the server | Windows & Unix | Used to configure the IP address to which yo want to bind your RabbitMQ server
-RABBITMQ_NODENAME | Linux: rabbit@hostname, Windows: rabbit@computername | Windows & Unix | Used to configure node name of your RabbitMQ server
-RABBITMQ_NODE_PORT | 5672 | Windows & Unix | Used to configure node binding port of your RabbitMQ server
-RABBITMQ_PLUGINS_DIR | rabbitMQ base directory | Windows & Unix | Used to configure location of RabbitMQ server plugins
-RABBITMQ_SASL_LOGS | rabbitMQ base directory | Windows & Unix | Used to configure location of system libraries logs
-RABBITMQ_SERVICENAME | rabbitmq-server | Windows & Unix | Used to configure rabbitmq service name that will be installed
+| variable name            | Default value                                                | OS               | Usage                                                                          |
+|--------------------------|--------------------------------------------------------------|------------------|--------------------------------------------------------------------------------|
+| RABBITMQ_BASE            | %APPDATA%RabbitMQ                                            | Windows Only     | Location where RabbitMQ has database and logs files                            |
+| RABBITMQ_CONFIG_FILE     | %RABBITMQ_BASE%rabbitmq.conf                                 | Windows and Unix | Used to configure location of RabbitMQ config file                             |
+| RABBITMQ_CONSOLE_LOG     | NA                                                           | Windows and Unix | Used to redirect console output from server to a file                          |
+| RABBITMQ_LOGS            | Windows - %APPDATA%RabbitMQ\log,Linux: /var/log/rabbitmq     | Windows & Unix   | This variable holds the location of rabbitmq logs                              |
+| RABBITMQ_LOG_BASE        | NA                                                           | Windows & Unix   | This variable hods log file base location of rabbitmq logs                     |
+| RABBITMQ_MNESIA_DIR      | Linux: /var/lib/rabbitmq, Windows - %APPDATA%RabbitMQ        | Windows & Unix   | Used to configure location of Mnesia database directory                        |
+| RABBITMQ_MNESIA_BASE     | NA                                                           | Windows & Unix   | Used to store base directory of Mnesia database                                |
+| RABBITMQ_NODE_IP_ADDRESS | By default, it binds to all network interfaces in the server | Windows & Unix   | Used to configure the IP address to which yo want to bind your RabbitMQ server |
+| RABBITMQ_NODENAME        | Linux: rabbit@hostname, Windows: rabbit@computername         | Windows & Unix   | Used to configure node name of your RabbitMQ server                            |
+| RABBITMQ_NODE_PORT       | 5672                                                         | Windows & Unix   | Used to configure node binding port of your RabbitMQ server                    |
+| RABBITMQ_PLUGINS_DIR     | rabbitMQ base directory                                      | Windows & Unix   | Used to configure location of RabbitMQ server plugins                          |
+| RABBITMQ_SASL_LOGS       | rabbitMQ base directory                                      | Windows & Unix   | Used to configure location of system libraries logs                            |
+| RABBITMQ_SERVICENAME     | rabbitmq-server                                              | Windows & Unix   | Used to configure rabbitmq service name that will be installed                 |
 
 ## RabbitMQ Config files
 
