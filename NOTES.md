@@ -198,8 +198,7 @@ binding
 >rabbitmqctl join_cluster rabbit@masternode  --ram
 > 
 
+## Asynchronous communication
 
-
-
-
-
++ asynchronous communication is done using adaptor called selectConnection
++ implements IO loops for asynchronous connection
