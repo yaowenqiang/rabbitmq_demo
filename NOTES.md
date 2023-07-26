@@ -157,7 +157,7 @@ Tuples should be inside list
 
 
 
-localhost:5432  guest/guest
+localhost:15672  guest/guest
 
 
 
