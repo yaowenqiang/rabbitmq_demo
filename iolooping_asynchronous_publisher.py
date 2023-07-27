@@ -72,7 +72,7 @@ class publish_engine:
 
     def schedule_next_message(self):
         #self._connection.add_timeout(self._message_interval, self.published_messages)
-        self._connection.ioloop.call_later(self._message_interval, self.published_messages)
+        self._connection.ioloop.call_later(self._message_interval, self.publish_message)
 
 
 
