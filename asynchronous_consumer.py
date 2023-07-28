@@ -17,10 +17,10 @@ class consume_engine:
 
     def on_open(self, connection):
         print('Reached connection open \n')
-        self._channel = self._connection.channel(self.on_channel_open)
+        self._channel = self._connection.channel(on_open_callback=self.on_channel_open)
 
 
-    def on_declare(self, channel):
+    def on_declare(self):
         print('Now in on declare')
         self._channel.add_on_cancel_callback(self.on_consumer_cancelled)
         self._consumer_tag = self._channel.basic_consume(self.on_message, self.QUEUE)
@@ -31,7 +31,7 @@ class consume_engine:
         if self._channel:
             self._channel.close()
 
-    def on_message(self, channel, basic_deliver, properties, body):
+    def on_message(self, basic_deliver, properties, body):
         self._channel.basic_ack(basic_deliver.delivery_tag)
         print(basic_deliver)
         print('Delivery tag is: ' + str(basic_deliver.delivery_tag))
@@ -43,9 +43,9 @@ class consume_engine:
         print('Reached channel open \n')
         argument_list = {'x-queue-master-locator': 'random'}
 
-        self._channel.queue_declare(self.on_declare, queue='orders_g', durable = True, arguments=argument_list)
+        self._channel.queue_declare('orders_g', durable = True, arguments=argument_list, callback=self.on_declare)
 
-    def on_close(self, connection, reply_code, reply_message):
+    def on_close(self, reply_code, reply_message):
         print(reply_code)
         print(reply_message)
         print('connection is being closed \n')
