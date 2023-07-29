@@ -11,7 +11,7 @@ class consume_engine:
     def __init__(self):
         self._channel = None
         self._connection = None
-        self.QUEUE = 'ordere_g'
+        self.QUEUE = 'orders_g'
         self.EXCHANGE = ''
 
 
@@ -43,7 +43,7 @@ class consume_engine:
         print('Reached channel open \n')
         argument_list = {'x-queue-master-locator': 'random'}
 
-        self._channel.queue_declare('orders_g', durable = True, arguments=argument_list, callback=self.on_declare)
+        self._channel.queue_declare(self.QUEUE, durable = True, arguments=argument_list, callback=self.on_declare)
 
     def on_close(self, reply_code, reply_message):
         print(reply_code)

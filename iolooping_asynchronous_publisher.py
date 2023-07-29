@@ -38,17 +38,17 @@ class publish_engine:
 
     def on_channel_open(self, channel):
         print('Reached channel open \n')
-        argument_list = {'x-queue-master-location': 'random'}
+        argument_list = {'x-queue-master-locator': 'random'}
         self._channel.queue_declare('orders_g', callback=self.on_declare, durable=True, arguments=argument_list)
 
 
     def on_delivery_conformation(self, method_frame):
-        confirmation_type = method_frame.NAME.split('.')[1].lower()
+        confirmation_type = method_frame.method.NAME.split('.')[1].lower()
         self._delivered_messages += 1
         print('\n'
               '===================================================================================================='
               )
-        print(method_frame)
+        print(method_frame.method.NAME)
         print(f'An {confirmation_type} has been received')
         print(f'Published {self.published_messages} messages and received delivery conformation for {self._delivered_messages} messages')
         print('\n'
