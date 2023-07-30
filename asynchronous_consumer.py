@@ -20,10 +20,13 @@ class consume_engine:
         self._channel = self._connection.channel(on_open_callback=self.on_channel_open)
 
 
-    def on_declare(self):
+    def on_declare(self, method):
         print('Now in on declare')
+        print(method)
         self._channel.add_on_cancel_callback(self.on_consumer_cancelled)
-        self._consumer_tag = self._channel.basic_consume(self.on_message, self.QUEUE)
+        self._consumer_tag = self._channel.basic_consume(self.QUEUE,self.on_message)
+        print('Now in after declare')
+
 
 
     def on_consumer_cancelled(self, method_frame):
@@ -41,9 +44,11 @@ class consume_engine:
 
     def on_channel_open(self, channel):
         print('Reached channel open \n')
-        argument_list = {'x-queue-master-locator': 'random'}
+        # argument_list = {'x-queue-master-locator': 'random'}
 
-        self._channel.queue_declare(self.QUEUE, durable = True, arguments=argument_list, callback=self.on_declare)
+        # self._channel.queue_declare(self.QUEUE, durable=True, arguments=argument_list, callback=self.on_declare)
+        self._channel.queue_declare(self.QUEUE, durable=True, callback=self.on_declare)
+        print('Reached queue declare \n')
 
     def on_close(self, reply_code, reply_message):
         print(reply_code)
@@ -54,7 +59,7 @@ class consume_engine:
     def stop_consuming(self):
         print('Keyboard Interrupt received !!! ')
         if self._channel:
-            self._channel.basic_cancel(self.on_cancelok, self._consumer_tag)
+            self._channel.basic_cancel(self._consumer_tag, self.on_cancelok)
 
 
     def on_cancelok(self, unused_frame):
