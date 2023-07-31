@@ -34,10 +34,9 @@ class consume_engine:
         if self._channel:
             self._channel.close()
 
-    def on_message(self, basic_deliver, properties, body):
-        self._channel.basic_ack(basic_deliver.delivery_tag)
-        print(basic_deliver)
-        print('Delivery tag is: ' + str(basic_deliver.delivery_tag))
+    def on_message(self, channel, method, properties, body):
+        self._channel.basic_ack(method.delivery_tag)
+        print('Delivery tag is: ' + str(method.delivery_tag))
         print(properties)
         print('Received content: ' + str(body))
 

@@ -38,8 +38,8 @@ class publish_engine:
 
     def on_channel_open(self, channel):
         print('Reached channel open \n')
-        argument_list = {'x-queue-master-locator': 'random'}
-        self._channel.queue_declare('orders_g', callback=self.on_declare, durable=True, arguments=argument_list)
+        # argument_list = {'x-queue-master-locator': 'random'}
+        self._channel.queue_declare('orders_g', callback=self.on_declare, durable=True, arguments=None)
 
 
     def on_delivery_conformation(self, method_frame):
