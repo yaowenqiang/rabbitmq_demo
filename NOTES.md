@@ -1,6 +1,6 @@
 # RabbitMQ
 
-> docker run -d --hostname my-rabbit --name some-rabbit   rabbitmq:3-management
+> docker run -d --hostname my-rabbit --name some-rabbit rabbitmq:3-management
 > git config --global alias.co checkout
 > git config --global alias.br branch
 > git config --global alias.ci commit
@@ -17,7 +17,6 @@ rabbitmq also support other protocols through plugin
 + HTTP -> For management plugins
 + Hex-STOMP
 
-
 Exchange Attributes
 
 + Exchange type
@@ -32,39 +31,39 @@ Message Attributes
 
 Used by bindings
 
-
 Exchange Types
 
 + Default Exchange
-  + Doesn't have a name
-  + Creates automatic binding with every queue
-  + Binding key will be the Queue name
-  + Useful for simple application
+    + Doesn't have a name
+    + Creates automatic binding with every queue
+    + Binding key will be the Queue name
+    + Useful for simple application
 + Direct Exchange
-  + Will have a name
-  + Bindings are note created automatically 
-  + Binding key will be the Queue name
-  + Useful for simple application
+    + Will have a name
+    + Bindings are note created automatically
+    + Binding key will be the Queue name
+    + Useful for simple application
 + Fanout Exchange
-  + Routing key doesn't have any effect
-  + Routes a copy of message to all queues
+    + Routing key doesn't have any effect
+    + Routes a copy of message to all queues
 + topic Exchange
-  + Its similar to direct exchange
-  + Rouing key is compared with binding patterns to route messages
+    + Its similar to direct exchange
+    + Rouing key is compared with binding patterns to route messages
 + Header Exchange
-  + Message Header is used to route message
-  + Messages are routed on match between message header and binding header
-  + If x-match=all, then all attributes should match
-  + If x-match=any, then any one attributes should match
+    + Message Header is used to route message
+    + Messages are routed on match between message header and binding header
+    + If x-match=all, then all attributes should match
+    + If x-match=any, then any one attributes should match
 
 # means 0 or one time
+
 * means any time
 
 ## Install
 
 > rabbitmq-plugins enable rabbitmq_management
-config file
-/etc/rabbitmq/rabbitmq.config
+> config file
+> /etc/rabbitmq/rabbitmq.config
 
 log file
 
@@ -75,11 +74,11 @@ startup_log
 
 ## Add user
 
-rabbitmqctl add_user  username apssword
+rabbitmqctl add_user username apssword
 rabbitmqctl set_user_tags username administrator(permission tag)
 rabbitmqctl set_permissions -p / username ".*" ".*" ".*"
 
-## RabbitMQ Environment Variables 
+## RabbitMQ Environment Variables
 
 ON windows
 
@@ -107,14 +106,12 @@ setx varname varvalue
 
 > brew info rabbitmq
 
-
 + Authentication
 + Performance
 + Memory limit
 + Disc Limit
 + Exchanges
 + Queues
-
 
 List and tuples in Erlang
 
@@ -127,78 +124,62 @@ Tuples
 data = {true, 123, "hello}
 
 Every configuration data is a tuple
-	{"config name" "config value‘}
+{"config name" "config value‘}
 
 Tuples should be inside list
 
 	[{"config name" : "config value1"}, {"config name": "config value2"}]
 
-
 [{rabbit,
-    [
-        {tcp_listensers, [{"127.0.0.1", 5222}], 
-			 [{"::1", 5222}]},
-        {num_tcp_acceptors, 1}
-    ]
+[
+{tcp_listensers, [{"127.0.0.1", 5222}],
+[{"::1", 5222}]},
+{num_tcp_acceptors, 1}
+]
 }
 ].
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-localhost:15672  guest/guest
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+localhost:15672 guest/guest
 
 binding
 
 # RabbitMQ Cluster
-                                                                  
+
 ## Types of Nodes
 
-+  RAM node (RAM memory)
++ RAM node (RAM memory)
 + Disk Node (Disc memory)
 
 > rabbitmqctl cluster_status
-> 
+>
 > rabbitmqctl stop_app
-> 
+>
 > nohup rabbitmq-server restart &
-> 
+>
 > nohup rabbitmqctl start_app
-> 
+>
 
 > vim /var/lib/rabbitmq/.erlang.cookie
-> 
->rabbitmqctl join_cluster rabbit@masternode  --ram
-> 
+>
+>rabbitmqctl join_cluster rabbit@masternode --ram
+>
 
 ## Asynchronous communication
 
 + asynchronous communication is done using adaptor called selectConnection
 + implements IO loops for asynchronous connection
+
+## Rabbitmq Federations
+
+| Cluster                                        | Federation                                                           | 
+|------------------------------------------------|----------------------------------------------------------------------|
+| Not WAN friendly                               | Not WAN friendly                                                     |
+| Can ont apply clustering for a specific source | Can federate a particular queue oe exchange based on the requirement |
+| Dependent to versions                          | Independent to version                                               |
+
+
+### Types of Federation in RabbitMQ
+
++ Federated Exchanges
++ Federated Queues
+
