@@ -183,3 +183,8 @@ binding
 + Federated Exchanges
 + Federated Queues
 
+####  Federated Exchanges
+
+
++ pair Tropology
++ Fanout Tropology
