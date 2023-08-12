@@ -188,3 +188,11 @@ binding
 
 + pair Tropology
 + Fanout Tropology
+
+
+> MaxHop = Tree Depth -1
+
+
+Federation URI
+
+> amqp://guest:guest@192.168.101.41:5672
